@@ -1,0 +1,27 @@
+ _____ _____ ____ _   _ _   _  _____     _____ _  _____ _   _  ____ 
+|_   _| ____/ ___| | | | \ | |/ _ \ \   / /_ _| |/ /_ _| \ | |/ ___|
+  | | |  _|| |   | |_| |  \| | | | \ \ / / | || ' / | ||  \| | |  _ 
+  | | | |__| |___|  _  | |\  | |_| |\ V /  | || . \ | || |\  | |_| |
+  |_| |_____\____|_| |_|_| \_|\___/  \_/  |___|_|\_\___|_| \_|\____|
+
+h2. Viking Burial
+
+Archives all Technoviking-related videos from YouTube, including metadata (e.g. stats, who created it, etc.)
+
+Technoviking does not dance to the C&D!!
+The C&D dances to Technoviking!!
+
+!http://scrapetv.com/News/News%20Pages/Business/images-4/techno-viking.jpg!
+
+h2. Usage
+
+# ruby download.rb
+
+Data stored in videos/ -- videos as .flv, 
+and the complete API data stored as .json
+
+h2. Credits
+
+Jamie Wilkinson | http://jamiedubs.com | http://github.com/jamiew
+Free Art & Technology (F.A.T.) | http://fffff.at
+Public domain / No rights reserved
