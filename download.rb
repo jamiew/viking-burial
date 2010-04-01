@@ -17,6 +17,7 @@
 require 'open-uri'
 require 'rubygems'
 require 'json'
+require 'CGI'
 
 # Turn youtube.com/watch?v=3f98f32#&x=y&z=blah into 3f98f32# 
 def youtube_id_from(url)
@@ -33,31 +34,37 @@ def scrape_youtube_flv(url)
   youtube = "http://www.youtube.com/"
   flv_url = nil
   video_id = youtube_id_from(url)
+
   open("#{youtube}watch\?v=#{video_id}") do |file|
     file.each_line do |line|
-      if line =~ /.SWF_ARGS.:(.*),\n$/
-        json = $1
-        hash = JSON.parse(json)
-        flv_url = "#{youtube}get_video?video_id=#{hash['video_id']}&t=#{hash['t']}"
+      if line =~ /\&t\=(.*)\&/
+        flv_url = "#{youtube}get_video?fmt=34&video_id=#{CGI.unescape video_id}&t=#{line.match(/\&t\=([A-Z0-9\%]+)/i)[1]}"
         break
       end
     end
   end
+
   flv_url
 end
 
 # Wrapper for how we're getting file from there to here
 # currently going to system's curl -- could use all ruby
 def download_file(url, filename, _opts = {})
+  if url.nil? || url == ''
+    puts "Cannot save #{filename} ... :("
+    return
+  end
+
   opts = {:clobber => false}.merge(_opts)
   if File.exists?(filename) && (opts[:clobber] && opts[:clobber] != true)
     puts "#{filename} already downloaded & not clobbering; skipping..."
-    next
+    return
   else
     puts "Saving #{url} => #{filename} ..."
   end
-    
+
   cmd = "curl -o \"#{filename}\" -L -A \"#{USER_AGENT}\" \"#{url}\" 2>&1"
+  p cmd
   # IO.popen(cmd) # Asyncronous
   `#{cmd}` # Syncronous
 end
