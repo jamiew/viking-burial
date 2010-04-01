@@ -11,11 +11,14 @@ h2. Usage
 
 # ruby download.rb
 
-Data stored in videos/ -- videos as .flv, 
-and the complete API data stored as .json
+Data is stored in videos/ -- 
+the videos files themselves as .flv, 
+and the video's metadata as .xml
 
-h2. Credits
+h2. Authors
 
-Jamie Wilkinson | http://jamiedubs.com | http://github.com/jamiew
-Free Art & Technology (F.A.T.) | http://fffff.at
-Public domain / No rights reserved
+Jamie Wilkinson | "jamiedubs.com":http://jamiedubs.com | "github.com/jamiew":http://github.com/jamiew
+Greg Leuch | "gleuch.com":http://gleuch.com | "github.com/gleuch":http://github.com/gleuch
+
+Public domain / No rights reserved, 2010
+Free Art & Technology (F.A.T.) | "http://FFFFF.AT":http://fffff.at
