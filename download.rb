@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 #
 # Viking Burial
 # download.rb
@@ -15,6 +16,7 @@
 
 
 require 'open-uri'
+require 'fileutils'
 require 'rubygems'
 require 'json'
 require 'CGI'
@@ -51,7 +53,7 @@ end
 # currently going to system's curl -- could use all ruby
 def download_file(url, filename, _opts = {})
   if url.nil? || url == ''
-    puts "Cannot save #{filename} ... :("
+    STDERR.puts "ERROR: Cannot save #{filename} ... :("
     return
   end
 
@@ -64,7 +66,6 @@ def download_file(url, filename, _opts = {})
   end
 
   cmd = "curl -o \"#{filename}\" -L -A \"#{USER_AGENT}\" \"#{url}\" 2>&1"
-  p cmd
   # IO.popen(cmd) # Asyncronous
   `#{cmd}` # Syncronous
 end
